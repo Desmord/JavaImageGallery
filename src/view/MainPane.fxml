@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="500.0"
+	xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="controller.MainController">
+	<children>
+		<VBox prefHeight="200.0" prefWidth="100.0">
+			<children>
+				<fx:include fx:id="myImage" source="ImagesPane.fxml" />
+				<HBox prefHeight="100.0" prefWidth="200.0">
+					<fx:include fx:id="myOpenFolder" source="OpenFolderPane.fxml" />
+					<fx:include fx:id="myFilter" source="FilterPane.fxml" />
+				</HBox>
+			</children>
+		</VBox>
+	</children>
+</AnchorPane>
