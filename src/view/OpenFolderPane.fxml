@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OpenFolderController">
-	<!-- TODO Add Nodes -->
+<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OpenFolderController">
+   <children>
+      <VBox prefHeight="100.0" prefWidth="400.0">
+         <children>
+            <Button fx:id="openFolderButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" text="Otwórz folder">
+               <VBox.margin>
+                  <Insets left="75.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Label fx:id="openFolderLabel" prefHeight="20.0" prefWidth="240.0" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets left="75.0" top="15.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>
-

@@ -16,6 +16,5 @@ public class ImageManager {
 		this.myFilterController = filterController;
 		this.myOpenFolderController = openFolderController;
 	}
-	
-	
+
 }
