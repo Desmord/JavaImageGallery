@@ -1,8 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FilterController">
-	<!-- TODO Add Nodes -->
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="controller.FilterController">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="700.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="250.0">
+               <HBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </HBox.margin>
+               <children>
+                  <Button fx:id="filterButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Filtruj">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="110.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="clearFilterButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Wyczyść filtry">
+                     <VBox.margin>
+                        <Insets left="110.0" top="5.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="300.0">
+               <HBox.margin>
+                  <Insets left="25.0" />
+               </HBox.margin>
+               <children>
+                  <ChoiceBox fx:id="minorChoiceBox" prefHeight="30.0" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </ChoiceBox>
+                  <ChoiceBox fx:id="majorChoiceBox" prefHeight="30.0" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </VBox.margin>
+                  </ChoiceBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
 </AnchorPane>
-
