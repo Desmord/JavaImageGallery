@@ -34,7 +34,21 @@ public class ImagesController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-		System.out.println("Inicjalizacja kontorela Images");
+		disableElements();
+		
+	}
+	
+	public void disableElements() {
+		
+		getPreviousImageButton().setDisable(true);
+		getNextImageButton().setDisable(true);
+		
+	}
+	
+	public void anableElements() {
+		
+		getPreviousImageButton().setDisable(false);
+		getNextImageButton().setDisable(false);
 		
 	}
 
