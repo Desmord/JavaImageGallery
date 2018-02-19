@@ -1,12 +1,16 @@
 package managers;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 import controller.FilterController;
 import controller.ImagesController;
 import controller.OpenFolderController;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.DirectoryChooser;
 
 public class ImageManager {
@@ -16,6 +20,7 @@ public class ImageManager {
 	private OpenFolderController myOpenFolderController;
 	private List<File> fullImageList = new ArrayList<>();
 	private List<File> curentImageList = new ArrayList<>();
+	private int mainImageIndex = 0;
 
 	public void setControllers(ImagesController imageController, FilterController filterController,
 			OpenFolderController openFolderController) {
@@ -52,16 +57,20 @@ public class ImageManager {
 			} else {
 
 				setCurentImageList(getSelectedDirectoryFileList(selectedDirectory));
-				anableElements();
+
+				setMainImageIndex(0);
+
+				displayCurrentImages();
 
 				System.out.println("gotowe i dobrze" + getFullImageList().size());
 				// tutaj odblokowanie wszystekogi i gotowe
 				// label ok
+				// ustawianie tekstu filtrow na zero
 			}
 
 		} else {
 
-			if (isImageListEmpty(getFullImageList())) {
+			if (isImageListEmpty(getCurentImageList())) {
 
 				disableElements();
 
@@ -69,8 +78,52 @@ public class ImageManager {
 				// tutaj blad nie wybranego image ----- anuluj
 				// getFolderPathButton().setText(directory.toString());
 
+			} else {
+				// tutaj cos
+				System.out.println("Tutaj anauja ale istnieje");
 			}
 
+		}
+
+	}
+
+	private void setMainImageIndex(int index) {
+		mainImageIndex = index;
+	}
+
+	private void displayCurrentImages() {
+
+		if (getCurentImageList().size() == 1) {
+
+			displayImage(getCurentImageList().get(getMainImageIndex()), myImageController.getMainImageView());
+
+		} else if (getCurentImageList().size() == 2) {
+
+			anableElements();
+
+			displayImage(getCurentImageList().get(getMainImageIndex()), myImageController.getMainImageView());
+
+			displayImage(getCurentImageList().get(getMainImageIndex() + 1), myImageController.getFirstMinorImageView());
+			displayImage(getCurentImageList().get(getMainImageIndex()), myImageController.getSecondMinorImageView());
+			displayImage(getCurentImageList().get(getMainImageIndex() + 1), myImageController.getThirdMinorImageView());
+
+		} else {
+			anableElements();
+			// tutaj display 2
+		}
+
+	}
+
+	private void displayImage(File file, ImageView imageView) {
+
+		try {
+
+			Image image = new Image(new FileInputStream(file.getPath()));
+
+			setImage(imageView, image);
+
+		} catch (FileNotFoundException e) {
+			System.out.println("B³¹d wczytania pliku.");
 		}
 
 	}
@@ -145,6 +198,57 @@ public class ImageManager {
 		myFilterController.disableElements();
 		myImageController.disableElements();
 
+	}
+
+	private void setImage(ImageView imageView, Image image) {
+
+		if (imageView.getFitWidth() > 200) {
+			setMainImage(imageView, image);
+		} else {
+			setMinorImage(imageView, image);
+		}
+
+	}
+
+	private void setMainImage(ImageView imageView, Image image) {
+
+		double aspectRatio = image.getWidth() / image.getHeight();
+		double realWidth = Math.min(imageView.getFitWidth(), imageView.getFitHeight() * aspectRatio);
+		double realHeight = Math.min(imageView.getFitHeight(), imageView.getFitWidth() / aspectRatio);
+
+		imageView.setImage(image);
+		imageView.setFitWidth(950);
+		imageView.setFitHeight(450);
+		imageView.setPreserveRatio(true);
+		imageView.setTranslateX((1050 - realWidth) / 2);
+
+	}
+
+	private void setMinorImage(ImageView imageView, Image image) {
+
+		double aspectRatio = image.getWidth() / image.getHeight();
+		double realWidth = Math.min(imageView.getFitWidth(), imageView.getFitHeight() * aspectRatio);
+		double realHeight = Math.min(imageView.getFitHeight(), imageView.getFitWidth() / aspectRatio);
+
+		imageView.setImage(image);
+		imageView.setFitWidth(150);
+		imageView.setFitHeight(100);
+		imageView.setPreserveRatio(true);
+
+	}
+
+	private void centerSecondaryImage(ImageView imageView, Image image) {
+
+		double aspectRatio = image.getWidth() / image.getHeight();
+		double realWidth = Math.min(imageView.getFitWidth(), imageView.getFitHeight() * aspectRatio);
+		double realHeight = Math.min(imageView.getFitHeight(), imageView.getFitWidth() / aspectRatio);
+
+		imageView.setTranslateX((100 - realWidth) / 2);
+
+	}
+
+	private int getMainImageIndex() {
+		return mainImageIndex;
 	}
 
 	private ImagesController getMyImageController() {

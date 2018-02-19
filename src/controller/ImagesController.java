@@ -56,7 +56,7 @@ public class ImagesController implements Initializable {
 		this.imageManager = imageManager;
 	}
 
-	private ImageView getMainImageView() {
+	public ImageView getMainImageView() {
 		return mainImageView;
 	}
 
@@ -64,7 +64,7 @@ public class ImagesController implements Initializable {
 		this.mainImageView = mainImageView;
 	}
 
-	private ImageView getFirstMinorImageView() {
+	public ImageView getFirstMinorImageView() {
 		return firstMinorImageView;
 	}
 
@@ -72,7 +72,7 @@ public class ImagesController implements Initializable {
 		this.firstMinorImageView = firstMinorImageView;
 	}
 
-	private ImageView getSecondMinorImageView() {
+	public ImageView getSecondMinorImageView() {
 		return secondMinorImageView;
 	}
 
@@ -80,7 +80,7 @@ public class ImagesController implements Initializable {
 		this.secondMinorImageView = secondMinorImageView;
 	}
 
-	private ImageView getThirdMinorImageView() {
+	public ImageView getThirdMinorImageView() {
 		return thirdMinorImageView;
 	}
 
