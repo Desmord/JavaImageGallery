@@ -101,15 +101,15 @@ public class ImageManager {
 
 			anableElements();
 
-			displayImage(getCurentImageList().get(getMainImageIndex()), myImageController.getMainImageView());
+			displayImage(getCurentImageList().get(isIndexOutOfListRange(getMainImageIndex())), myImageController.getMainImageView());
 
-			displayImage(getCurentImageList().get(getMainImageIndex() + 1), myImageController.getFirstMinorImageView());
-			displayImage(getCurentImageList().get(getMainImageIndex()), myImageController.getSecondMinorImageView());
-			displayImage(getCurentImageList().get(getMainImageIndex() + 1), myImageController.getThirdMinorImageView());
+			displayImage(getCurentImageList().get(isIndexOutOfListRange(getMainImageIndex() + 1)), myImageController.getFirstMinorImageView());
+			displayImage(getCurentImageList().get(isIndexOutOfListRange(getMainImageIndex() + 1)), myImageController.getThirdMinorImageView());
 
 		} else {
 			anableElements();
 			// tutaj display 2
+			//czy tutaj trzeba 3+ jesli jeset proper index
 		}
 
 	}
@@ -244,6 +244,23 @@ public class ImageManager {
 		double realHeight = Math.min(imageView.getFitHeight(), imageView.getFitWidth() / aspectRatio);
 
 		imageView.setTranslateX((100 - realWidth) / 2);
+
+	}
+	/**
+	 * Checks whether the given index is larger than the size of the array or less than 0.
+	 * @param index
+	 * @return proper index
+	 */
+	
+	private int isIndexOutOfListRange(int index) {
+		
+		if(index >= getCurentImageList().size()) {
+			return 0;
+		}else if(index < 0){
+			return getCurentImageList().size()-1;
+		}else {
+			return index;
+		}
 
 	}
 
