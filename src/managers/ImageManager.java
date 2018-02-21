@@ -108,7 +108,12 @@ public class ImageManager {
 
 		} else {
 			anableElements();
-			// tutaj display 2
+			
+			displayImage(getCurentImageList().get(isIndexOutOfListRange(getMainImageIndex())), myImageController.getMainImageView());
+
+			displayImage(getCurentImageList().get(isIndexOutOfListRange(getMainImageIndex() - 1)), myImageController.getFirstMinorImageView());
+			displayImage(getCurentImageList().get(isIndexOutOfListRange(getMainImageIndex() + 1)), myImageController.getThirdMinorImageView());
+			//tuta jwysietlanie labelu i tak dalej
 			//czy tutaj trzeba 3+ jesli jeset proper index
 		}
 
