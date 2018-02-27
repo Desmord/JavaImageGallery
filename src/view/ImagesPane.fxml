@@ -30,7 +30,7 @@
                <children>
                   <ImageView fx:id="firstMinorImageView" fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
-                        <Insets left="200.0" />
+                        <Insets left="250.0" />
                      </HBox.margin>
                   </ImageView>
                   <ImageView fx:id="secondMinorImageView" fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
