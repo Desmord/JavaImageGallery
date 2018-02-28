@@ -3,6 +3,8 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -37,6 +39,20 @@ public class ImagesController implements Initializable {
 
 		disableElements();
 
+		setButtonsEvents();
+		
+	}
+	
+	private void setButtonsEvents() {
+		getPreviousImageButton().setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent arg0) {
+				
+				getImageManager().setPreviousImage();
+				
+			}
+		});
 	}
 
 	public void disableElements() {
@@ -111,6 +127,10 @@ public class ImagesController implements Initializable {
 
 	private void setImageNumberLabel(Label imageNumberLabel) {
 		this.imageNumberLabel = imageNumberLabel;
+	}
+
+	private ImageManager getImageManager() {
+		return imageManager;
 	}
 
 }
