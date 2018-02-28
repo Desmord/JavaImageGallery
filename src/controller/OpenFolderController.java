@@ -21,6 +21,9 @@ public class OpenFolderController implements Initializable {
 	@FXML
 	private Label openFolderLabel;
 
+	@FXML
+	private Label infoFolderLabel;
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -39,6 +42,14 @@ public class OpenFolderController implements Initializable {
 			}
 
 		});
+	}
+	
+	public void setInfoLabelText(String text) {
+		getInfoFolderLabel().setText(text);
+	}
+	
+	public void clearInfoLabelText() {
+		getInfoFolderLabel().setText("");
 	}
 
 	public void setImageManager(ImageManager imageManager) {
@@ -61,4 +72,13 @@ public class OpenFolderController implements Initializable {
 		this.openFolderLabel = openFolderLabel;
 	}
 
+	private Label getInfoFolderLabel() {
+		return infoFolderLabel;
+	}
+
+	private void setInfoFolderLabel(Label infoFolderLabel) {
+		this.infoFolderLabel = infoFolderLabel;
+	}
+
+	
 }

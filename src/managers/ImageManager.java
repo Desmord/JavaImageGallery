@@ -42,16 +42,17 @@ public class ImageManager {
 			if (isImageListEmpty(getFullImageList())) {
 
 				if (isImageListEmpty(getCurentImageList())) {
-
+					
+					//Empty current imageList and empty folder
 					disableElements();
-
-					System.out.println("pusty folder i puste curent ");
-					// tutaj blokowanie wszyskiego i wyswietlanie ze nie ma zadnych zdjec
-					// zmiana labelu ze jest pusy
+					
+					this.myOpenFolderController.setInfoLabelText("Brak zdjêæ w folderze.");
+					
 				} else {
 
-					System.out.println("Nic nie wczytano ale jest kurent");
-
+					//Empty folder but current ImageList is not empty
+					this.myOpenFolderController.setInfoLabelText("Brak zdjêæ w folderze.");
+					
 				}
 
 			} else {
