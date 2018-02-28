@@ -6,52 +6,61 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import managers.ImageManager;
 
 public class ImagesController implements Initializable {
-	
+
 	private ImageManager imageManager = new ImageManager();
-	
+
 	@FXML
-    private ImageView mainImageView;
+	private ImageView mainImageView;
 
-    @FXML
-    private ImageView firstMinorImageView;
+	@FXML
+	private ImageView firstMinorImageView;
 
-    @FXML
-    private ImageView secondMinorImageView;
+	@FXML
+	private Label imageNumberLabel;
 
-    @FXML
-    private ImageView thirdMinorImageView;
+	@FXML
+	private ImageView thirdMinorImageView;
 
-    @FXML
-    private Button previousImageButton;
+	@FXML
+	private Button previousImageButton;
 
-    @FXML
-    private Button nextImageButton;
+	@FXML
+	private Button nextImageButton;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+
 		disableElements();
-		
-	}
-	
-	public void disableElements() {
-		
-		getPreviousImageButton().setDisable(true);
-		getNextImageButton().setDisable(true);
-		
-	}
-	
-	public void anableElements() {
-		
-		getPreviousImageButton().setDisable(false);
-		getNextImageButton().setDisable(false);
-		
+
 	}
 
+	public void disableElements() {
+
+		getPreviousImageButton().setDisable(true);
+		getNextImageButton().setDisable(true);
+
+	}
+
+	public void anableElements() {
+
+		getPreviousImageButton().setDisable(false);
+		getNextImageButton().setDisable(false);
+
+	}
+
+	public void setImageNumberLabelText(String text) {
+		getImageNumberLabel().setText(text);
+	}
+	
+	public void clearImageNumberLabelText() {
+		getImageNumberLabel().setText("");
+	}
+	
 	public void setImageManager(ImageManager imageManager) {
 		this.imageManager = imageManager;
 	}
@@ -70,14 +79,6 @@ public class ImagesController implements Initializable {
 
 	private void setFirstMinorImageView(ImageView firstMinorImageView) {
 		this.firstMinorImageView = firstMinorImageView;
-	}
-
-	public ImageView getSecondMinorImageView() {
-		return secondMinorImageView;
-	}
-
-	private void setSecondMinorImageView(ImageView secondMinorImageView) {
-		this.secondMinorImageView = secondMinorImageView;
 	}
 
 	public ImageView getThirdMinorImageView() {
@@ -103,5 +104,13 @@ public class ImagesController implements Initializable {
 	private void setNextImageButton(Button nextImageButton) {
 		this.nextImageButton = nextImageButton;
 	}
-	
+
+	private Label getImageNumberLabel() {
+		return imageNumberLabel;
+	}
+
+	private void setImageNumberLabel(Label imageNumberLabel) {
+		this.imageNumberLabel = imageNumberLabel;
+	}
+
 }
