@@ -52,7 +52,7 @@
                <children>
                   <Button fx:id="previousImageButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" text="Poprzednie">
                      <HBox.margin>
-                        <Insets left="350.0" />
+                        <Insets left="400.0" />
                      </HBox.margin>
                   </Button>
                   <Button fx:id="nextImageButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" text="Następne">
