@@ -46,26 +46,27 @@ public class ImageManager {
 					//Empty current imageList and empty folder
 					disableElements();
 					
-					this.myOpenFolderController.setInfoLabelText("Brak zdjêæ w folderze.");
+					this.myOpenFolderController.setInfoLabelText("Brak zdjêæ w folderze: "+selectedDirectory.toString());
 					
 				} else {
 
 					//Empty folder but current ImageList is not empty
-					this.myOpenFolderController.setInfoLabelText("Brak zdjêæ w folderze.");
+					this.myOpenFolderController.setInfoLabelText("Brak zdjêæ w folderze: "+selectedDirectory.toString());
 					
 				}
 
 			} else {
 
+				//Folder contains images
 				setCurentImageList(getSelectedDirectoryFileList(selectedDirectory));
 
 				setMainImageIndex(0);
 
 				displayCurrentImages();
+				
+				this.myOpenFolderController.setOpenFolderLabelText(selectedDirectory.toString());
+				this.myOpenFolderController.clearInfoLabelText();
 
-				System.out.println("gotowe i dobrze" + getFullImageList().size());
-				// tutaj odblokowanie wszystekogi i gotowe
-				// label ok
 				// ustawianie tekstu filtrow na zero
 			}
 
@@ -73,15 +74,18 @@ public class ImageManager {
 
 			if (isImageListEmpty(getCurentImageList())) {
 
+				//Cancel and current imageList is empty
 				disableElements();
 
+				this.myOpenFolderController.setInfoLabelText("Anulowano wybór, lista zdjêæ pusta.");
+				
 				System.out.println("Tutaj anuluj");
-				// tutaj blad nie wybranego image ----- anuluj
-				// getFolderPathButton().setText(directory.toString());
 
 			} else {
-				// tutaj cos
-				System.out.println("Tutaj anauja ale istnieje");
+				
+				//Cancel but current imageList is not empty
+				this.myOpenFolderController.setInfoLabelText("Anulowano wybór.");
+				
 			}
 
 		}

@@ -44,6 +44,10 @@ public class OpenFolderController implements Initializable {
 		});
 	}
 	
+	public void setOpenFolderLabelText(String text) {
+		getOpenFolderLabel().setText(text);
+	}
+	
 	public void setInfoLabelText(String text) {
 		getInfoFolderLabel().setText(text);
 	}
