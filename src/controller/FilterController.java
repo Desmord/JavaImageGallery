@@ -28,7 +28,25 @@ public class FilterController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
-		System.out.println("Inicjalizacja kontroleru filtru");
+		disableElements();
+
+	}
+
+	public void disableElements() {
+
+		getFilterButton().setDisable(true);
+		getClearFilterButton().setDisable(true);
+		getMinorChoiceBox().setDisable(true);
+		getMajorChoiceBox().setDisable(true);
+
+	}
+
+	public void anableElements() {
+
+		getFilterButton().setDisable(false);
+		getClearFilterButton().setDisable(false);
+		getMinorChoiceBox().setDisable(false);
+		getMajorChoiceBox().setDisable(false);
 
 	}
 

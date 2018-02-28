@@ -34,7 +34,21 @@ public class ImagesController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-		System.out.println("Inicjalizacja kontorela Images");
+		disableElements();
+		
+	}
+	
+	public void disableElements() {
+		
+		getPreviousImageButton().setDisable(true);
+		getNextImageButton().setDisable(true);
+		
+	}
+	
+	public void anableElements() {
+		
+		getPreviousImageButton().setDisable(false);
+		getNextImageButton().setDisable(false);
 		
 	}
 
@@ -42,7 +56,7 @@ public class ImagesController implements Initializable {
 		this.imageManager = imageManager;
 	}
 
-	private ImageView getMainImageView() {
+	public ImageView getMainImageView() {
 		return mainImageView;
 	}
 
@@ -50,7 +64,7 @@ public class ImagesController implements Initializable {
 		this.mainImageView = mainImageView;
 	}
 
-	private ImageView getFirstMinorImageView() {
+	public ImageView getFirstMinorImageView() {
 		return firstMinorImageView;
 	}
 
@@ -58,7 +72,7 @@ public class ImagesController implements Initializable {
 		this.firstMinorImageView = firstMinorImageView;
 	}
 
-	private ImageView getSecondMinorImageView() {
+	public ImageView getSecondMinorImageView() {
 		return secondMinorImageView;
 	}
 
@@ -66,7 +80,7 @@ public class ImagesController implements Initializable {
 		this.secondMinorImageView = secondMinorImageView;
 	}
 
-	private ImageView getThirdMinorImageView() {
+	public ImageView getThirdMinorImageView() {
 		return thirdMinorImageView;
 	}
 
