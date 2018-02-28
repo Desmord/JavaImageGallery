@@ -126,14 +126,25 @@ public class ImageManager {
 		}
 		this.myImageController.setImageNumberLabelText(getMainImageIndex() + 1 + " / " + getCurentImageList().size());
 	}
-	
+
 	public void setPreviousImage() {
-		
-		setMainImageIndex(isIndexOutOfListRange(getMainImageIndex() -1 ));
-		
+
+		setMainImageIndex(isIndexOutOfListRange(getMainImageIndex() - 1));
+
 		displayCurrentImages();
-		
+
 		this.myImageController.setImageNumberLabelText(getMainImageIndex() + 1 + " / " + getCurentImageList().size());
+
+	}
+
+	public void setNextImage() {
+
+		setMainImageIndex(isIndexOutOfListRange(getMainImageIndex() + 1));
+
+		displayCurrentImages();
+
+		this.myImageController.setImageNumberLabelText(getMainImageIndex() + 1 + " / " + getCurentImageList().size());
+		
 	}
 
 	private void displayImage(File file, ImageView imageView) {

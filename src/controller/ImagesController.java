@@ -40,21 +40,40 @@ public class ImagesController implements Initializable {
 		disableElements();
 
 		setButtonsEvents();
+
+	}
+
+	private void setButtonsEvents() {
+	
+		setPreviousButtonEvent();
+		setnextButtonEvent();
 		
 	}
-	
-	private void setButtonsEvents() {
+
+	private void setPreviousButtonEvent() {
 		getPreviousImageButton().setOnAction(new EventHandler<ActionEvent>() {
-			
+
 			@Override
 			public void handle(ActionEvent arg0) {
-				
+
 				getImageManager().setPreviousImage();
-				
+
 			}
 		});
 	}
 
+	private void setnextButtonEvent() {
+		getNextImageButton().setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+
+				getImageManager().setNextImage();
+
+			}
+		});
+	}
+	
 	public void disableElements() {
 
 		getPreviousImageButton().setDisable(true);
@@ -72,11 +91,11 @@ public class ImagesController implements Initializable {
 	public void setImageNumberLabelText(String text) {
 		getImageNumberLabel().setText(text);
 	}
-	
+
 	public void clearImageNumberLabelText() {
 		getImageNumberLabel().setText("");
 	}
-	
+
 	public void setImageManager(ImageManager imageManager) {
 		this.imageManager = imageManager;
 	}
