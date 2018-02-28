@@ -42,28 +42,30 @@ public class ImageManager {
 			if (isImageListEmpty(getFullImageList())) {
 
 				if (isImageListEmpty(getCurentImageList())) {
-					
-					//Empty current imageList and empty folder
+
+					// Empty current imageList and empty folder
 					disableElements();
-					
-					this.myOpenFolderController.setInfoLabelText("Brak zdjêæ w folderze: "+selectedDirectory.toString());
-					
+
+					this.myOpenFolderController
+							.setInfoLabelText("Brak zdjêæ w folderze: " + selectedDirectory.toString());
+
 				} else {
 
-					//Empty folder but current ImageList is not empty
-					this.myOpenFolderController.setInfoLabelText("Brak zdjêæ w folderze: "+selectedDirectory.toString());
-					
+					// Empty folder but current ImageList is not empty
+					this.myOpenFolderController
+							.setInfoLabelText("Brak zdjêæ w folderze: " + selectedDirectory.toString());
+
 				}
 
 			} else {
 
-				//Folder contains images
+				// Folder contains images
 				setCurentImageList(getSelectedDirectoryFileList(selectedDirectory));
 
 				setMainImageIndex(0);
 
 				displayCurrentImages();
-				
+
 				this.myOpenFolderController.setOpenFolderLabelText(selectedDirectory.toString());
 				this.myOpenFolderController.clearInfoLabelText();
 
@@ -74,26 +76,22 @@ public class ImageManager {
 
 			if (isImageListEmpty(getCurentImageList())) {
 
-				//Cancel and current imageList is empty
+				// Cancel and current imageList is empty
 				disableElements();
 
 				this.myOpenFolderController.setInfoLabelText("Anulowano wybór, lista zdjêæ pusta.");
-				
+
 				System.out.println("Tutaj anuluj");
 
 			} else {
-				
-				//Cancel but current imageList is not empty
+
+				// Cancel but current imageList is not empty
 				this.myOpenFolderController.setInfoLabelText("Anulowano wybór.");
-				
+
 			}
 
 		}
 
-	}
-
-	private void setMainImageIndex(int index) {
-		mainImageIndex = index;
 	}
 
 	private void displayCurrentImages() {
@@ -106,22 +104,27 @@ public class ImageManager {
 
 			anableElements();
 
-			displayImage(getCurentImageList().get(isIndexOutOfListRange(getMainImageIndex())), myImageController.getMainImageView());
+			displayImage(getCurentImageList().get(isIndexOutOfListRange(getMainImageIndex())),
+					myImageController.getMainImageView());
 
-			displayImage(getCurentImageList().get(isIndexOutOfListRange(getMainImageIndex() + 1)), myImageController.getFirstMinorImageView());
-			displayImage(getCurentImageList().get(isIndexOutOfListRange(getMainImageIndex() + 1)), myImageController.getThirdMinorImageView());
+			displayImage(getCurentImageList().get(isIndexOutOfListRange(getMainImageIndex() + 1)),
+					myImageController.getFirstMinorImageView());
+			displayImage(getCurentImageList().get(isIndexOutOfListRange(getMainImageIndex() + 1)),
+					myImageController.getThirdMinorImageView());
 
 		} else {
 			anableElements();
-			
-			displayImage(getCurentImageList().get(isIndexOutOfListRange(getMainImageIndex())), myImageController.getMainImageView());
 
-			displayImage(getCurentImageList().get(isIndexOutOfListRange(getMainImageIndex() - 1)), myImageController.getFirstMinorImageView());
-			displayImage(getCurentImageList().get(isIndexOutOfListRange(getMainImageIndex() + 1)), myImageController.getThirdMinorImageView());
-			//tuta jwysietlanie labelu i tak dalej
-			//czy tutaj trzeba 3+ jesli jeset proper index
+			displayImage(getCurentImageList().get(isIndexOutOfListRange(getMainImageIndex())),
+					myImageController.getMainImageView());
+
+			displayImage(getCurentImageList().get(isIndexOutOfListRange(getMainImageIndex() - 1)),
+					myImageController.getFirstMinorImageView());
+			displayImage(getCurentImageList().get(isIndexOutOfListRange(getMainImageIndex() + 1)),
+					myImageController.getThirdMinorImageView());
+
 		}
-
+		this.myImageController.setImageNumberLabelText(getMainImageIndex() + 1 + " / " + getCurentImageList().size());
 	}
 
 	private void displayImage(File file, ImageView imageView) {
@@ -256,22 +259,29 @@ public class ImageManager {
 		imageView.setTranslateX((100 - realWidth) / 2);
 
 	}
+
 	/**
-	 * Checks whether the given index is larger than the size of the array or less than 0.
+	 * Checks whether the given index is larger than the size of the array or less
+	 * than 0.
+	 * 
 	 * @param index
 	 * @return proper index
 	 */
-	
+
 	private int isIndexOutOfListRange(int index) {
-		
-		if(index >= getCurentImageList().size()) {
+
+		if (index >= getCurentImageList().size()) {
 			return 0;
-		}else if(index < 0){
-			return getCurentImageList().size()-1;
-		}else {
+		} else if (index < 0) {
+			return getCurentImageList().size() - 1;
+		} else {
 			return index;
 		}
 
+	}
+
+	private void setMainImageIndex(int index) {
+		mainImageIndex = index;
 	}
 
 	private int getMainImageIndex() {
