@@ -34,12 +34,12 @@
                   <Insets left="25.0" />
                </HBox.margin>
                <children>
-                  <ChoiceBox fx:id="minorChoiceBox" prefHeight="30.0" prefWidth="150.0">
+                  <ChoiceBox fx:id="majorChoiceBox" prefHeight="30.0" prefWidth="150.0">
                      <VBox.margin>
                         <Insets left="10.0" top="10.0" />
                      </VBox.margin>
                   </ChoiceBox>
-                  <ChoiceBox fx:id="majorChoiceBox" prefHeight="30.0" prefWidth="150.0">
+                  <ChoiceBox fx:id="minorChoiceBox" prefHeight="30.0" prefWidth="150.0">
                      <VBox.margin>
                         <Insets left="10.0" top="15.0" />
                      </VBox.margin>
