@@ -1,10 +1,14 @@
 package managers;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.imageio.ImageIO;
 
 import controller.FilterController;
 import controller.ImagesController;
@@ -144,7 +148,7 @@ public class ImageManager {
 		displayCurrentImages();
 
 		this.myImageController.setImageNumberLabelText(getMainImageIndex() + 1 + " / " + getCurentImageList().size());
-		
+
 	}
 
 	private void displayImage(File file, ImageView imageView) {
@@ -298,6 +302,369 @@ public class ImageManager {
 			return index;
 		}
 
+	}
+
+	public void filterBigSize() {
+
+		List<File> filtredImageList = new ArrayList<>();
+
+		for (File file : getFullImageList()) {
+
+			BufferedImage img = null;
+			try {
+				img = ImageIO.read(file);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			if (img.getWidth() < 2501 || img.getHeight() > 1500) {
+				filtredImageList.add(file);
+			}
+
+		}
+
+		if (filtredImageList.size() > 0) {
+
+			setMainImageIndex(0);
+
+			setCurentImageList(filtredImageList);
+
+			displayCurrentImages();
+
+			this.myOpenFolderController.clearInfoLabelText();
+
+		} else {
+			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
+		}
+	}
+
+	public void filterMediumSize() {
+
+		List<File> filtredImageList = new ArrayList<>();
+
+		for (File file : getFullImageList()) {
+
+			BufferedImage img = null;
+			try {
+				img = ImageIO.read(file);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			if (img.getWidth() > 2500 || img.getHeight() > 2500) {
+				filtredImageList.add(file);
+			}
+
+		}
+
+		if (filtredImageList.size() > 0) {
+			setMainImageIndex(0);
+
+			setCurentImageList(filtredImageList);
+
+			displayCurrentImages();
+
+			this.myOpenFolderController.clearInfoLabelText();
+
+		} else {
+			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
+		}
+	}
+
+	public void filterSmallSize() {
+
+		List<File> filtredImageList = new ArrayList<>();
+
+		for (File file : getFullImageList()) {
+
+			BufferedImage img = null;
+			try {
+				img = ImageIO.read(file);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			if (img.getWidth() < 1501) {
+				filtredImageList.add(file);
+			}
+
+		}
+
+		if (filtredImageList.size() > 0) {
+			setMainImageIndex(0);
+
+			setCurentImageList(filtredImageList);
+
+			displayCurrentImages();
+
+			this.myOpenFolderController.clearInfoLabelText();
+
+		} else {
+			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
+		}
+
+	}
+
+	public void filterBigWage() {
+
+		List<File> filtredImageList = new ArrayList<>();
+
+		for (File file : getFullImageList()) {
+
+			BufferedImage img = null;
+			try {
+				img = ImageIO.read(file);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			long fileSizeInBytes = file.length();
+			long fileSizeInKB = fileSizeInBytes / 1024;
+			long fileSizeInMB = fileSizeInKB / 1024;
+
+			if (fileSizeInMB >= 2) {
+				filtredImageList.add(file);
+			}
+
+		}
+
+		if (filtredImageList.size() > 0) {
+			setMainImageIndex(0);
+
+			setCurentImageList(filtredImageList);
+
+			displayCurrentImages();
+
+			this.myOpenFolderController.clearInfoLabelText();
+
+		} else {
+			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
+		}
+		
+	}
+
+	public void filterMediumWage() {
+		
+		List<File> filtredImageList = new ArrayList<>();
+
+		for (File file : getFullImageList()) {
+
+			BufferedImage img = null;
+			try {
+				img = ImageIO.read(file);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			long fileSizeInBytes = file.length();
+			long fileSizeInKB = fileSizeInBytes / 1024;
+			long fileSizeInMB = fileSizeInKB / 1024;
+
+			if (fileSizeInMB < 2 && fileSizeInMB >= 1) {
+				filtredImageList.add(file);
+			}
+
+		}
+
+		if (filtredImageList.size() > 0) {
+			setMainImageIndex(0);
+
+			setCurentImageList(filtredImageList);
+
+			displayCurrentImages();
+
+			this.myOpenFolderController.clearInfoLabelText();
+
+		} else {
+			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
+		}
+		
+	}
+
+	public void filterSmallWage() {
+		
+		List<File> filtredImageList = new ArrayList<>();
+
+		for (File file : getFullImageList()) {
+
+			BufferedImage img = null;
+			try {
+				img = ImageIO.read(file);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			long fileSizeInBytes = file.length();
+			long fileSizeInKB = fileSizeInBytes / 1024;
+			long fileSizeInMB = fileSizeInKB / 1024;
+
+			if (fileSizeInMB < 1) {
+				filtredImageList.add(file);
+			}
+
+		}
+
+		if (filtredImageList.size() > 0) {
+			setMainImageIndex(0);
+
+			setCurentImageList(filtredImageList);
+
+			displayCurrentImages();
+
+			this.myOpenFolderController.clearInfoLabelText();
+
+		} else {
+			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
+		}
+		
+	}
+
+	public void filterJpeg() {
+		
+		List<File> filtredImageList = new ArrayList<>();
+
+		for (File file : getFullImageList()) {
+
+			if(file.getName().matches("([^\\s]+(\\.(?i)(jpeg))$)")) {
+				
+				BufferedImage img = null;
+				try {
+					img = ImageIO.read(file);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				filtredImageList.add(file);
+			}
+
+		}
+
+		if (filtredImageList.size() > 0) {
+			
+			setMainImageIndex(0);
+
+			setCurentImageList(filtredImageList);
+
+			displayCurrentImages();
+
+			this.myOpenFolderController.clearInfoLabelText();
+
+		} else {
+			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
+		}
+		
+	}
+
+	public void filterJpg() {
+		
+		List<File> filtredImageList = new ArrayList<>();
+
+		for (File file : getFullImageList()) {
+
+			if(file.getName().matches("([^\\s]+(\\.(?i)(jpg))$)")) {
+				
+				BufferedImage img = null;
+				try {
+					img = ImageIO.read(file);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				filtredImageList.add(file);
+			}
+
+		}
+
+		if (filtredImageList.size() > 0) {
+			
+			setMainImageIndex(0);
+
+			setCurentImageList(filtredImageList);
+
+			displayCurrentImages();
+
+			this.myOpenFolderController.clearInfoLabelText();
+
+		} else {
+			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
+		}
+		
+	}
+
+	public void filterPng() {
+		
+		List<File> filtredImageList = new ArrayList<>();
+
+		for (File file : getFullImageList()) {
+
+			if(file.getName().matches("([^\\s]+(\\.(?i)(png))$)")) {
+				
+				BufferedImage img = null;
+				try {
+					img = ImageIO.read(file);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				filtredImageList.add(file);
+			}
+
+		}
+
+		if (filtredImageList.size() > 0) {
+			
+			setMainImageIndex(0);
+
+			setCurentImageList(filtredImageList);
+
+			displayCurrentImages();
+
+			this.myOpenFolderController.clearInfoLabelText();
+
+		} else {
+			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
+		}
+		
+	}
+
+	public void filterBmp() {
+		
+		List<File> filtredImageList = new ArrayList<>();
+
+		for (File file : getFullImageList()) {
+
+			if(file.getName().matches("([^\\s]+(\\.(?i)(bmp))$)")) {
+				
+				BufferedImage img = null;
+				try {
+					img = ImageIO.read(file);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				filtredImageList.add(file);
+			}
+
+		}
+
+		if (filtredImageList.size() > 0) {
+			
+			setMainImageIndex(0);
+
+			setCurentImageList(filtredImageList);
+
+			displayCurrentImages();
+
+			this.myOpenFolderController.clearInfoLabelText();
+
+		} else {
+			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
+		}
+		
+	}
+	
+	public void clearLabelInfoText() {
+		myOpenFolderController.clearInfoLabelText();
 	}
 
 	public void setMainImageIndex(int index) {

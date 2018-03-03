@@ -141,35 +141,35 @@ public class FilterController implements Initializable {
 	private void filterSize() {
 
 		if (minorChoiceBox.getValue().equals("> 2500px")) {
-			// filterBigSize(); tutaj z iumagesMenagger
+			imageManager.filterBigSize();
 		} else if (minorChoiceBox.getValue().equals("2500px < > 1500px")) {
-			// filterMediumSize(); tutaj z iumagesMenagger
+			imageManager.filterMediumSize();
 		} else {
-			// filterSmallSize(); tutaj z iumagesMenagger
+			imageManager.filterSmallSize();
 		}
 	}
 
 	private void filterWage() {
 
 		if (minorChoiceBox.getValue().equals("> 2MB ")) {
-			// filterBigWage();tutaj z iumagesMenagger
+			imageManager.filterBigWage();
 		} else if (minorChoiceBox.getValue().equals("2MB < > 1MB")) {
-			// filterMediumWage(); tutaj z iumagesMenagger
+			imageManager.filterMediumWage();
 		} else {
-			// filterSmallWage(); tutaj z iumagesMenagger
+			imageManager.filterSmallWage();
 		}
 	}
 
 	private void filterType() {
 
 		if (minorChoiceBox.getValue().equals("Jpeg")) {
-			// filterJpeg(); tutaj z iumagesMenagger
+			imageManager.filterJpeg();
 		} else if (minorChoiceBox.getValue().equals("Jpg")) {
-			// filterJpg(); tutaj z iumagesMenagger
+			imageManager.filterJpg();
 		} else if (minorChoiceBox.getValue().equals("Bmp")) {
-			// filterBmp(); tutaj z iumagesMenagger
+			imageManager.filterBmp();
 		} else {
-			// filterPng(); tutaj z iumagesMenagger
+			imageManager.filterPng();
 		}
 	}
 	
@@ -185,6 +185,8 @@ public class FilterController implements Initializable {
 				
 				imageManager.displayCurrentImages();
 
+				imageManager.clearLabelInfoText();
+				
 			}
 		});
 
