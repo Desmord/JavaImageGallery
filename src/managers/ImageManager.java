@@ -323,7 +323,7 @@ public class ImageManager {
 
 		}
 
-		if (filtredImageList.size() > 1) {
+		if (filtredImageList.size() > 0) {
 
 			setMainImageIndex(0);
 
@@ -357,7 +357,7 @@ public class ImageManager {
 
 		}
 
-		if (filtredImageList.size() > 1) {
+		if (filtredImageList.size() > 0) {
 			setMainImageIndex(0);
 
 			setCurentImageList(filtredImageList);
@@ -390,7 +390,7 @@ public class ImageManager {
 
 		}
 
-		if (filtredImageList.size() > 1) {
+		if (filtredImageList.size() > 0) {
 			setMainImageIndex(0);
 
 			setCurentImageList(filtredImageList);
@@ -406,15 +406,117 @@ public class ImageManager {
 	}
 
 	public void filterBigWage() {
-		System.out.println("Filtrujemy wage d");
+
+		List<File> filtredImageList = new ArrayList<>();
+
+		for (File file : getFullImageList()) {
+
+			BufferedImage img = null;
+			try {
+				img = ImageIO.read(file);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			long fileSizeInBytes = file.length();
+			long fileSizeInKB = fileSizeInBytes / 1024;
+			long fileSizeInMB = fileSizeInKB / 1024;
+
+			if (fileSizeInMB >= 2) {
+				filtredImageList.add(file);
+			}
+
+		}
+
+		if (filtredImageList.size() > 0) {
+			setMainImageIndex(0);
+
+			setCurentImageList(filtredImageList);
+
+			displayCurrentImages();
+
+			this.myOpenFolderController.clearInfoLabelText();
+
+		} else {
+			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
+		}
+		
 	}
 
 	public void filterMediumWage() {
-		System.out.println("Filtrujemy wage m");
+		
+		List<File> filtredImageList = new ArrayList<>();
+
+		for (File file : getFullImageList()) {
+
+			BufferedImage img = null;
+			try {
+				img = ImageIO.read(file);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			long fileSizeInBytes = file.length();
+			long fileSizeInKB = fileSizeInBytes / 1024;
+			long fileSizeInMB = fileSizeInKB / 1024;
+
+			if (fileSizeInMB < 2 && fileSizeInMB >= 1) {
+				filtredImageList.add(file);
+			}
+
+		}
+
+		if (filtredImageList.size() > 0) {
+			setMainImageIndex(0);
+
+			setCurentImageList(filtredImageList);
+
+			displayCurrentImages();
+
+			this.myOpenFolderController.clearInfoLabelText();
+
+		} else {
+			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
+		}
+		
 	}
 
 	public void filterSmallWage() {
-		System.out.println("Filtrujemy wage s");
+		
+		List<File> filtredImageList = new ArrayList<>();
+
+		for (File file : getFullImageList()) {
+
+			BufferedImage img = null;
+			try {
+				img = ImageIO.read(file);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			long fileSizeInBytes = file.length();
+			long fileSizeInKB = fileSizeInBytes / 1024;
+			long fileSizeInMB = fileSizeInKB / 1024;
+
+			if (fileSizeInMB < 1) {
+				filtredImageList.add(file);
+			}
+
+		}
+
+		if (filtredImageList.size() > 0) {
+			setMainImageIndex(0);
+
+			setCurentImageList(filtredImageList);
+
+			displayCurrentImages();
+
+			this.myOpenFolderController.clearInfoLabelText();
+
+		} else {
+			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
+		}
+		
 	}
 
 	public void filterJpeg() {
