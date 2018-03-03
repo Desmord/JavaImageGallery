@@ -141,11 +141,11 @@ public class FilterController implements Initializable {
 	private void filterSize() {
 
 		if (minorChoiceBox.getValue().equals("> 2500px")) {
-			// filterBigSize(); tutaj z iumagesMenagger
+			imageManager.filterBigSize();
 		} else if (minorChoiceBox.getValue().equals("2500px < > 1500px")) {
-			// filterMediumSize(); tutaj z iumagesMenagger
+			imageManager.filterMediumSize();
 		} else {
-			// filterSmallSize(); tutaj z iumagesMenagger
+			imageManager.filterSmallSize();
 		}
 	}
 
