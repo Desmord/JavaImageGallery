@@ -152,24 +152,24 @@ public class FilterController implements Initializable {
 	private void filterWage() {
 
 		if (minorChoiceBox.getValue().equals("> 2MB ")) {
-			// filterBigWage();tutaj z iumagesMenagger
+			imageManager.filterBigWage();
 		} else if (minorChoiceBox.getValue().equals("2MB < > 1MB")) {
-			// filterMediumWage(); tutaj z iumagesMenagger
+			imageManager.filterMediumWage();
 		} else {
-			// filterSmallWage(); tutaj z iumagesMenagger
+			imageManager.filterSmallWage();
 		}
 	}
 
 	private void filterType() {
 
 		if (minorChoiceBox.getValue().equals("Jpeg")) {
-			// filterJpeg(); tutaj z iumagesMenagger
+			imageManager.filterJpeg();
 		} else if (minorChoiceBox.getValue().equals("Jpg")) {
-			// filterJpg(); tutaj z iumagesMenagger
+			imageManager.filterJpg();
 		} else if (minorChoiceBox.getValue().equals("Bmp")) {
-			// filterBmp(); tutaj z iumagesMenagger
+			imageManager.filterBmp();
 		} else {
-			// filterPng(); tutaj z iumagesMenagger
+			imageManager.filterPng();
 		}
 	}
 	

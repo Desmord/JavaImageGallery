@@ -324,16 +324,16 @@ public class ImageManager {
 		}
 
 		if (filtredImageList.size() > 1) {
-			
+
 			setMainImageIndex(0);
 
 			setCurentImageList(filtredImageList);
 
 			displayCurrentImages();
-			
+
 			this.myOpenFolderController.clearInfoLabelText();
 
-		}else {
+		} else {
 			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
 		}
 	}
@@ -363,10 +363,10 @@ public class ImageManager {
 			setCurentImageList(filtredImageList);
 
 			displayCurrentImages();
-			
+
 			this.myOpenFolderController.clearInfoLabelText();
 
-		}else {
+		} else {
 			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
 		}
 	}
@@ -398,11 +398,39 @@ public class ImageManager {
 			displayCurrentImages();
 
 			this.myOpenFolderController.clearInfoLabelText();
-			
-		}else {
+
+		} else {
 			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
 		}
 
+	}
+
+	public void filterBigWage() {
+		System.out.println("Filtrujemy wage d");
+	}
+
+	public void filterMediumWage() {
+		System.out.println("Filtrujemy wage m");
+	}
+
+	public void filterSmallWage() {
+		System.out.println("Filtrujemy wage s");
+	}
+
+	public void filterJpeg() {
+		System.out.println("Filtrujemy wage jpeg");
+	}
+
+	public void filterJpg() {
+		System.out.println("Filtrujemy wage jpg");
+	}
+
+	public void filterPng() {
+		System.out.println("Filtrujemy wage png");
+	}
+
+	public void filterBmp() {
+		System.out.println("Filtrujemy wage bmp");
 	}
 
 	public void setMainImageIndex(int index) {
