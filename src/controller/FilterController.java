@@ -185,6 +185,8 @@ public class FilterController implements Initializable {
 				
 				imageManager.displayCurrentImages();
 
+				imageManager.clearLabelInfoText();
+				
 			}
 		});
 

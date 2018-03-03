@@ -520,19 +520,151 @@ public class ImageManager {
 	}
 
 	public void filterJpeg() {
-		System.out.println("Filtrujemy wage jpeg");
+		
+		List<File> filtredImageList = new ArrayList<>();
+
+		for (File file : getFullImageList()) {
+
+			if(file.getName().matches("([^\\s]+(\\.(?i)(jpeg))$)")) {
+				
+				BufferedImage img = null;
+				try {
+					img = ImageIO.read(file);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				filtredImageList.add(file);
+			}
+
+		}
+
+		if (filtredImageList.size() > 0) {
+			
+			setMainImageIndex(0);
+
+			setCurentImageList(filtredImageList);
+
+			displayCurrentImages();
+
+			this.myOpenFolderController.clearInfoLabelText();
+
+		} else {
+			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
+		}
+		
 	}
 
 	public void filterJpg() {
-		System.out.println("Filtrujemy wage jpg");
+		
+		List<File> filtredImageList = new ArrayList<>();
+
+		for (File file : getFullImageList()) {
+
+			if(file.getName().matches("([^\\s]+(\\.(?i)(jpg))$)")) {
+				
+				BufferedImage img = null;
+				try {
+					img = ImageIO.read(file);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				filtredImageList.add(file);
+			}
+
+		}
+
+		if (filtredImageList.size() > 0) {
+			
+			setMainImageIndex(0);
+
+			setCurentImageList(filtredImageList);
+
+			displayCurrentImages();
+
+			this.myOpenFolderController.clearInfoLabelText();
+
+		} else {
+			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
+		}
+		
 	}
 
 	public void filterPng() {
-		System.out.println("Filtrujemy wage png");
+		
+		List<File> filtredImageList = new ArrayList<>();
+
+		for (File file : getFullImageList()) {
+
+			if(file.getName().matches("([^\\s]+(\\.(?i)(png))$)")) {
+				
+				BufferedImage img = null;
+				try {
+					img = ImageIO.read(file);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				filtredImageList.add(file);
+			}
+
+		}
+
+		if (filtredImageList.size() > 0) {
+			
+			setMainImageIndex(0);
+
+			setCurentImageList(filtredImageList);
+
+			displayCurrentImages();
+
+			this.myOpenFolderController.clearInfoLabelText();
+
+		} else {
+			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
+		}
+		
 	}
 
 	public void filterBmp() {
-		System.out.println("Filtrujemy wage bmp");
+		
+		List<File> filtredImageList = new ArrayList<>();
+
+		for (File file : getFullImageList()) {
+
+			if(file.getName().matches("([^\\s]+(\\.(?i)(bmp))$)")) {
+				
+				BufferedImage img = null;
+				try {
+					img = ImageIO.read(file);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				filtredImageList.add(file);
+			}
+
+		}
+
+		if (filtredImageList.size() > 0) {
+			
+			setMainImageIndex(0);
+
+			setCurentImageList(filtredImageList);
+
+			displayCurrentImages();
+
+			this.myOpenFolderController.clearInfoLabelText();
+
+		} else {
+			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
+		}
+		
+	}
+	
+	public void clearLabelInfoText() {
+		myOpenFolderController.clearInfoLabelText();
 	}
 
 	public void setMainImageIndex(int index) {
