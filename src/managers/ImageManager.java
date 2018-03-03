@@ -73,7 +73,6 @@ public class ImageManager {
 				this.myOpenFolderController.setOpenFolderLabelText(selectedDirectory.toString());
 				this.myOpenFolderController.clearInfoLabelText();
 
-				// ustawianie tekstu filtrow na zero
 			}
 
 		} else {
@@ -440,11 +439,11 @@ public class ImageManager {
 		} else {
 			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
 		}
-		
+
 	}
 
 	public void filterMediumWage() {
-		
+
 		List<File> filtredImageList = new ArrayList<>();
 
 		for (File file : getFullImageList()) {
@@ -478,11 +477,11 @@ public class ImageManager {
 		} else {
 			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
 		}
-		
+
 	}
 
 	public void filterSmallWage() {
-		
+
 		List<File> filtredImageList = new ArrayList<>();
 
 		for (File file : getFullImageList()) {
@@ -516,31 +515,31 @@ public class ImageManager {
 		} else {
 			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
 		}
-		
+
 	}
 
 	public void filterJpeg() {
-		
+
 		List<File> filtredImageList = new ArrayList<>();
 
 		for (File file : getFullImageList()) {
 
-			if(file.getName().matches("([^\\s]+(\\.(?i)(jpeg))$)")) {
-				
+			if (file.getName().matches("([^\\s]+(\\.(?i)(jpeg))$)")) {
+
 				BufferedImage img = null;
 				try {
 					img = ImageIO.read(file);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				
+
 				filtredImageList.add(file);
 			}
 
 		}
 
 		if (filtredImageList.size() > 0) {
-			
+
 			setMainImageIndex(0);
 
 			setCurentImageList(filtredImageList);
@@ -552,31 +551,31 @@ public class ImageManager {
 		} else {
 			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
 		}
-		
+
 	}
 
 	public void filterJpg() {
-		
+
 		List<File> filtredImageList = new ArrayList<>();
 
 		for (File file : getFullImageList()) {
 
-			if(file.getName().matches("([^\\s]+(\\.(?i)(jpg))$)")) {
-				
+			if (file.getName().matches("([^\\s]+(\\.(?i)(jpg))$)")) {
+
 				BufferedImage img = null;
 				try {
 					img = ImageIO.read(file);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				
+
 				filtredImageList.add(file);
 			}
 
 		}
 
 		if (filtredImageList.size() > 0) {
-			
+
 			setMainImageIndex(0);
 
 			setCurentImageList(filtredImageList);
@@ -588,31 +587,31 @@ public class ImageManager {
 		} else {
 			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
 		}
-		
+
 	}
 
 	public void filterPng() {
-		
+
 		List<File> filtredImageList = new ArrayList<>();
 
 		for (File file : getFullImageList()) {
 
-			if(file.getName().matches("([^\\s]+(\\.(?i)(png))$)")) {
-				
+			if (file.getName().matches("([^\\s]+(\\.(?i)(png))$)")) {
+
 				BufferedImage img = null;
 				try {
 					img = ImageIO.read(file);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				
+
 				filtredImageList.add(file);
 			}
 
 		}
 
 		if (filtredImageList.size() > 0) {
-			
+
 			setMainImageIndex(0);
 
 			setCurentImageList(filtredImageList);
@@ -624,31 +623,31 @@ public class ImageManager {
 		} else {
 			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
 		}
-		
+
 	}
 
 	public void filterBmp() {
-		
+
 		List<File> filtredImageList = new ArrayList<>();
 
 		for (File file : getFullImageList()) {
 
-			if(file.getName().matches("([^\\s]+(\\.(?i)(bmp))$)")) {
-				
+			if (file.getName().matches("([^\\s]+(\\.(?i)(bmp))$)")) {
+
 				BufferedImage img = null;
 				try {
 					img = ImageIO.read(file);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				
+
 				filtredImageList.add(file);
 			}
 
 		}
 
 		if (filtredImageList.size() > 0) {
-			
+
 			setMainImageIndex(0);
 
 			setCurentImageList(filtredImageList);
@@ -660,9 +659,9 @@ public class ImageManager {
 		} else {
 			this.myOpenFolderController.setInfoLabelText("Nieznaleziono pasuj¹cych zdjêæ. Akcja przerwana.");
 		}
-		
+
 	}
-	
+
 	public void clearLabelInfoText() {
 		myOpenFolderController.clearInfoLabelText();
 	}
