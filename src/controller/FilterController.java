@@ -10,6 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import managers.ImageManager;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 public class FilterController implements Initializable {
 
@@ -37,7 +39,9 @@ public class FilterController implements Initializable {
 		disableElements();
 
 		setMainFilterItems();
-		
+
+		setElementsClickEvents();
+
 	}
 
 	public void disableElements() {
@@ -63,7 +67,129 @@ public class FilterController implements Initializable {
 		majorChoiceBox.setItems(FXCollections.observableArrayList("Rozmiar", "Rodzaj", "Rozmiary na dysku"));
 
 	}
+
+	private void setElementsClickEvents() {
+
+		setMainFilterClickEvent();
+		setFilterButtonClickEvent();
+		setClearFilterClickEvent();
+
+	}
+
+	private void setMainFilterClickEvent() {
+		majorChoiceBox.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+
+				minorChoiceBox.setDisable(false);
+				setSecondartFilterItems(majorChoiceBox.getValue());
+
+			}
+		});
+	}
+
+	private void setSecondartFilterItems(String type) {
+
+		if (type.equals("Rozmiar")) {
+			minorChoiceBox.setItems(sizeList);
+		} else if (type.equals("Rodzaj")) {
+			minorChoiceBox.setItems(typeList);
+		} else {
+			minorChoiceBox.setItems(wageList);
+		}
+
+	}
+
+	private void setFilterButtonClickEvent() {
+		filterButton.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+
+				filterMain(majorChoiceBox.getValue());
+
+			}
+		});
+	}
+
+	private void filterMain(String filterType) {
+
+		if (isFiltersChosen()) {
+
+			if (filterType.equals("Rozmiar")) {
+				filterSize();
+			} else if (filterType.equals("Rozmiary na dysku")) {
+				filterWage();
+			} else {
+				filterType();
+			}
+		}
+
+	}
+
+	private boolean isFiltersChosen() {
+
+		if (majorChoiceBox.getValue() == null || minorChoiceBox.getValue() == null) {
+			return false;
+		} else {
+			return true;
+		}
+
+	}
+
+	private void filterSize() {
+
+		if (minorChoiceBox.getValue().equals("> 2500px")) {
+			// filterBigSize(); tutaj z iumagesMenagger
+		} else if (minorChoiceBox.getValue().equals("2500px < > 1500px")) {
+			// filterMediumSize(); tutaj z iumagesMenagger
+		} else {
+			// filterSmallSize(); tutaj z iumagesMenagger
+		}
+	}
+
+	private void filterWage() {
+
+		if (minorChoiceBox.getValue().equals("> 2MB ")) {
+			// filterBigWage();tutaj z iumagesMenagger
+		} else if (minorChoiceBox.getValue().equals("2MB < > 1MB")) {
+			// filterMediumWage(); tutaj z iumagesMenagger
+		} else {
+			// filterSmallWage(); tutaj z iumagesMenagger
+		}
+	}
+
+	private void filterType() {
+
+		if (minorChoiceBox.getValue().equals("Jpeg")) {
+			// filterJpeg(); tutaj z iumagesMenagger
+		} else if (minorChoiceBox.getValue().equals("Jpg")) {
+			// filterJpg(); tutaj z iumagesMenagger
+		} else if (minorChoiceBox.getValue().equals("Bmp")) {
+			// filterBmp(); tutaj z iumagesMenagger
+		} else {
+			// filterPng(); tutaj z iumagesMenagger
+		}
+	}
 	
+	private void setClearFilterClickEvent() {
+
+		clearFilterButton.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+
+				imageManager.setCurentImageList(imageManager.getFullImageList());
+				imageManager.setMainImageIndex(0);
+				
+				imageManager.displayCurrentImages();
+
+			}
+		});
+
+	}
+
 	public void setImageManager(ImageManager imageManager) {
 		this.imageManager = imageManager;
 	}

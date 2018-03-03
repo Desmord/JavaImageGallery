@@ -94,7 +94,7 @@ public class ImageManager {
 
 	}
 
-	private void displayCurrentImages() {
+	public void displayCurrentImages() {
 
 		if (getCurentImageList().size() == 1) {
 
@@ -300,7 +300,7 @@ public class ImageManager {
 
 	}
 
-	private void setMainImageIndex(int index) {
+	public void setMainImageIndex(int index) {
 		mainImageIndex = index;
 	}
 
@@ -332,7 +332,7 @@ public class ImageManager {
 		this.myOpenFolderController = myOpenFolderController;
 	}
 
-	private List<File> getFullImageList() {
+	public List<File> getFullImageList() {
 		return fullImageList;
 	}
 
@@ -344,7 +344,7 @@ public class ImageManager {
 		return curentImageList;
 	}
 
-	private void setCurentImageList(List<File> curentImageList) {
+	public void setCurentImageList(List<File> curentImageList) {
 		this.curentImageList = curentImageList;
 	}
 
